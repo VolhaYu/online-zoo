@@ -32,11 +32,8 @@ const priceItem = document.querySelectorAll('.prise-item');
 const anotherAmount = document.getElementById('number');
 const label = document.querySelectorAll('.label');
 
-console.log(priceItem);
-
 function limit() {
     let val = anotherAmount.value;
-    // console.log(val);
     if (val.length >= 5){
         val = val.slice (0,4);
     };
@@ -53,14 +50,12 @@ for(let i = 0; i < inputs.length; i++) {
 
         let newPrice = inputs[i].value;
         anotherAmount.setAttribute('value', newPrice);
-        console.log(anotherAmount);
     });
 }
 anotherAmount.addEventListener('input', function() {
     let val = anotherAmount.value;   
     for (let i = 0; i < priceItem.length; i++) {
         let price = priceItem[i].textContent;
-         
         if(price.includes(val)) {            
             priceItem.forEach(item => item.classList.remove('prise-item_active'));
             priceItem[i].classList.add('prise-item_active');  

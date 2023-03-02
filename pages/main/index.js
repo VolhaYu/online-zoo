@@ -26,7 +26,7 @@ document.addEventListener('click', event => {
 //   карусель Pets
 
 const wrapCards = document.querySelector('.wrap-cards');
-let card = document.querySelectorAll('.card');
+let cards = document.querySelectorAll('.card');
 const arrowNext = document.querySelector('.arrow-next');
 const arrowPrev = document.querySelector('.arrow-prev');
 let isEnabled = true;
@@ -41,6 +41,7 @@ const shuffle = (deck) => {
     }
     return deck;
 };
+
 function creatCard() {
     let frag = document.createDocumentFragment();
     let a = shuffle(wrapCards.children);
@@ -48,6 +49,7 @@ function creatCard() {
     frag.appendChild(a[0]);
     wrapCards.appendChild(frag);
 }
+
 function changeCurrentItem(n) {
     currentItem = (n + wrapCards.length) % wrapCards.length;
 }
@@ -62,8 +64,8 @@ function showCards(direction) {
     wrapCards.classList.add(direction);
     wrapCards.addEventListener('animationend', function() {
         this.classList.remove(direction);
-        isEnabled = true;
     });
+        isEnabled = true;
 }
 function prevItem(n) {
     hideCards('to-right');
@@ -77,7 +79,7 @@ function nextItem(n) {
     showCards('from-right');
 }
 arrowNext.addEventListener('click', () => {
-    if(isEnabled) {
+  if(isEnabled) {
         nextItem(currentItem);
         creatCard();
     }    
@@ -91,51 +93,56 @@ arrowPrev.addEventListener('click', () => {
 
 // Карусель в блоке Testimonials
 
-const wrapTestimonials = document.querySelector('.wrap-testimonials');
 const testimonials = document.querySelectorAll('.testimonial');
 const scrolRange = document.querySelector('.scrol-range');
-// console.log(wrapTestimonials);
 
 function showNext() {
-    wrapTestimonials.classList.add('wrap-testimonial-next');
+  testimonials.forEach(test => {
+    test.style.transform=`translate(-296px)`;
+  });
 }
 
 function showPrev() {
-    wrapTestimonials.classList.add('wrap-testimonial-prev');
+  testimonials.forEach(test => {
+    test.style.transform=`translate(0px)`;
+  });
 }
 
-
-scrolRange.addEventListener('input', () => { 
-    let value = scrolRange.value;
-    let step = scrolRange.step;
-    console.log(step);
-    console.log(value);
-    if (value > 0) {
-        console.log(value === (value + step));
-        showNext();
-    }else {
-        showPrev();
-    }
-})
+function showTestimonials() {
+  scrolRange.addEventListener('input', () => { 
+      let value = scrolRange.value;
+      if (value++) {
+          showNext();
+      }else {
+          showPrev();
+      }
+  });
+}
+showTestimonials();
 
 // pop-up
-
 const popUp = document.querySelector('.pop-up');
 const popUpContent = document.querySelector('.pop-up-content');
 const popUpClose = document.querySelector('.pop-up-close');
 const popUpOverlay = document.querySelector('.pop-up_overlay');
+let testimonialPopup = document.querySelector('.testimonial_pop-up');
 
-for (let i = 0; i < testimonials.length; i++) {
-    testimonials[i].addEventListener('click', () => {
-        popUp.classList.add('pop-up-active');
-    });
+let textPopup = document.querySelector('.text-testimonial_pop-up');
+const r = document.querySelector('.text-testimonial-t');
+
+if(window.innerWidth <= 640) {
+  for (let i = 0; i < testimonials.length; i++) {
+      testimonials[i].addEventListener('click', () => {
+          popUp.classList.add('pop-up-active');
+      });
+  }
+  popUpClose.addEventListener('click', () => {
+      popUp.classList.remove('pop-up-active');
+  });
+  
+  popUp.addEventListener('click', () => {
+      popUp.classList.remove('pop-up-active');
+  });
 }
-popUpClose.addEventListener('click', () => {
-    popUp.classList.remove('pop-up-active');
-});
-
-popUp.addEventListener('click', () => {
-    popUp.classList.remove('pop-up-active');
-});
 
 
