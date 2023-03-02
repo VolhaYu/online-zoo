@@ -18,6 +18,7 @@ body {
     background-image: url(../../assets/images/GiantPanda.jpg);
     background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
     position: relative;
     margin-bottom: 140px;
 
@@ -182,7 +183,7 @@ li:last-child {
     margin-right: 87px;
 }
 .text-backstage {
-   flex: 1;
+    flex: 1;
 }
 .h2 {
     font-weight: 400;
@@ -218,11 +219,6 @@ li:last-child {
     position: relative;
     overflow: hidden;
 }
-/* .wrap-slider {
-    position: relative;
-    width: 100%;
-    display: flex;
-} */
 .wrap-cards {
     position: relative;
     width: 100%;
@@ -233,26 +229,16 @@ li:last-child {
     margin-bottom: 80px;
     animation: 0.5s ease-in-out;
 }
-/* .wrap-cards_dublicate {
-    display: none;
-}
-.wrap-cards_next {
-    display: block;
-}
-.wrap-cards_next {
-    position: absolute;
-    top: 0;
-} */
 .to-left {
-animation-name: left;
+    animation-name: left;
+    animation-direction: alternate-reverse;
 }
 .to-right {
     animation-name: right;
-    animation-direction: reverse;
 }
 .from-left {
     animation-name: left;
-    animation-direction: reverse;
+    
 }
 .from-right {
     animation-name: right;
@@ -512,14 +498,6 @@ animation-name: left;
     border-radius: 20px;
     transition-duration: 1s;
 }
-.wrap-testimonial-next {
-    transform: translateX(-267px);
-    transition-duration: 1s;
-}
-.wrap-testimonial-prev {
-    transform: translateX(267px);
-    transition-duration: 1s;
-}
 .testimonial::after {
     position: absolute;
     content: "";
@@ -564,7 +542,7 @@ animation-name: left;
     left: 156px;
     top: 5px;
 }
-.text-terminationals {
+.text-testimonials {
     width: 90%;
     margin: 0 auto;
     padding-bottom: 19px;
@@ -595,7 +573,7 @@ animation-name: left;
     border-radius: 5px;
 }
 .scrol-range::-webkit-slider-thumb {
-    width: 100px;
+    width: 50%;
     height: 6px;
     -webkit-appearance: none;
     background: #FE9013;
@@ -606,7 +584,7 @@ animation-name: left;
     justify-content: center;
     margin-bottom: 31px;
 }
- .scrol-range:hover {
+.scrol-range:hover {
     cursor: pointer;
 }
 .btn2, .btn-footer {
@@ -1397,7 +1375,7 @@ animation-name: left;
         justify-content: center;
         width: 100%;
         height: 100%;
-        position: absolute;
+        position: fixed;
         z-index: 3000;
         left: -700px;
         background-color: rgba(20, 20, 20, 0.3);
@@ -1432,6 +1410,7 @@ animation-name: left;
         background-image: url(../../assets/icons/user_icon.svg);
         background-position: 16px 15px;
         background-repeat: no-repeat;
+        -webkit-line-clamp: 17;
     }
     .testimonial_pop-up::after {
         position: absolute;
@@ -1465,7 +1444,7 @@ animation-name: left;
     .h3-sect5 {
         margin-top: 0;
     }
-    .text-terminationals {
+    .text-testimonials {
         margin: 0;
         padding-left: 18px;
     }
